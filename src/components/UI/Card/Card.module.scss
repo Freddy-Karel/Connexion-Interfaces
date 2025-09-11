@@ -1,0 +1,36 @@
+// Variables spécifiques à la card
+$card-border-radius: 0.5rem;
+$card-border-width: 1px;
+$card-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+$card-transition: all 0.2s ease-in-out;
+
+.card {
+  border: $card-border-width solid var(--border-color, #ced4da);
+  border-radius: $card-border-radius;
+  background-color: white;
+  box-shadow: $card-shadow;
+  transition: $card-transition;
+  overflow: hidden;
+  
+  &:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+}
+
+.header {
+  padding: 1rem 1.25rem;
+  border-bottom: $card-border-width solid var(--border-color, #ced4da);
+  background-color: var(--light-color, #f8f9fa);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.content {
+  padding: 1.25rem;
+}
+
+.footer {
+  padding: 1rem 1.25rem;
+  border-top: $card-border-width solid var(--border-color, #ced4da);
+  background-color: var(--light-color, #f8f9fa);
+}
