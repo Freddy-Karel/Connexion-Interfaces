@@ -1,0 +1,186 @@
+// Variables
+$loader-colors: (
+  primary: var(--primary-color, #007bff),
+  light: #ffffff,
+  dark: #333333
+);
+
+// Loader container
+.loader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Tailles
+.small {
+  &.spinner {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  &.dots {
+    transform: scale(0.8);
+  }
+  
+  &.progress {
+    width: 4rem;
+  }
+}
+
+.medium {
+  &.spinner {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  &.progress {
+    width: 6rem;
+  }
+}
+
+.large {
+  &.spinner {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  &.dots {
+    transform: scale(1.2);
+  }
+  
+  &.progress {
+    width: 8rem;
+  }
+}
+
+// Variante Spinner (par défaut)
+.spinner {
+  // Utilisation de map.get() au lieu de map-get()
+  border: 2px solid map-get($loader-colors, light);
+  border-top: 2px solid map-get($loader-colors, primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  
+  .loader.dark & {
+    border-color: rgba(255, 255, 255, 0.2);
+    border-top-color: map-get($loader-colors, light);
+  }
+}
+
+// Variante Dots
+.dotsLoader {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: map-get($loader-colors, primary);
+  animation: bounce 1.4s infinite ease-in-out both;
+  
+  .loader.dark & {
+    background-color: map-get($loader-colors, light);
+  }
+  
+  &:nth-child(1) { animation-delay: -0.32s; }
+  &:nth-child(2) { animation-delay: -0.16s; }
+}
+
+// Variante Progress Bar
+.progressLoader {
+  width: 100%;
+  height: 0.25rem;
+  background-color: rgba(map-get($loader-colors, primary), 0.2);
+  border-radius: 0.125rem;
+  overflow: hidden;
+  
+  .loader.dark & {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.progressBar {
+  width: 100%;
+  height: 100%;
+  background-color: map-get($loader-colors, primary);
+  animation: progress 1.5s ease-in-out infinite;
+  
+  .loader.dark & {
+    background-color: map-get($loader-colors, light);
+  }
+}
+
+// Animations
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { 
+    transform: scale(0);
+  }
+  40% { 
+    transform: scale(1);
+  }
+}
+
+@keyframes progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+// Accessibilité
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Overlay pour loader plein écran
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+// Container pour loader centré
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+// Texte de chargement
+.loadingText {
+  color: map-get($loader-colors, primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  
+  .overlay & {
+    color: white;
+  }
+}

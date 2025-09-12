@@ -1,0 +1,42 @@
+// Variables spécifiques au badge
+$badge-padding: 0.35rem 0.75rem;
+$badge-border-radius: 1rem;
+$badge-font-size: 0.75rem;
+$badge-font-weight: 600;
+
+.badge {
+  padding: $badge-padding;
+  border-radius: $badge-border-radius;
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+// Variants de couleur
+.success {
+  background-color: var(--success-color, #28a745);
+  color: white;
+}
+
+.error {
+  background-color: var(--danger-color, #dc3545);
+  color: white;
+}
+
+.warning {
+  background-color: var(--warning-color, #ffc107);
+  color: var(--dark-color, #343a40);
+}
+
+.info {
+  background-color: var(--info-color, #17a2b8);
+  color: white;
+}
+
+.neutral {
+  background-color: var(--secondary-color, #6c757d);
+  color: white;
+}

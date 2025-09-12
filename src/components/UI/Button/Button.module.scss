@@ -1,102 +1,134 @@
-// Variables spécifiques au bouton
-$button-padding: 0.75rem 1.5rem;
-$button-border-radius: 0.375rem;
-$button-font-weight: 600;
-$button-transition: all 0.2s ease-in-out;
-
 .button {
-  // Styles de base communs à tous les boutons
-  padding: $button-padding;
-  border: none;
-  border-radius: $button-border-radius;
-  font-weight: $button-font-weight;
-  cursor: pointer;
-  transition: $button-transition;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  font-family: inherit;
-  font-size: 1rem;
+  gap: var(--spacing-sm);
+  padding: var(--spacing) var(--spacing-lg);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
 
-  // États communs
-  &:hover:not(.disabled) {
-    transform: translateY(-1px);
+  &:focus {
+    outline: 2px solid var(--primary-300);
+    outline-offset: 2px;
   }
 
-  &:active:not(.disabled) {
-    transform: translateY(0);
-  }
-
-  // Variants de couleur
-  &.primary {
-    background-color: var(--primary-color, #007bff);
-    color: white;
-
-    &:hover:not(.disabled) {
-      background-color: var(--primary-hover, #0056b3);
-    }
-  }
-
-  &.secondary {
-    background-color: var(--secondary-color, #6c757d);
-    color: white;
-
-    &:hover:not(.disabled) {
-      background-color: var(--secondary-hover, #545b62);
-    }
-  }
-
-  &.success {
-    background-color: var(--success-color, #28a745);
-    color: white;
-
-    &:hover:not(.disabled) {
-      background-color: var(--success-hover, #1e7e34);
-    }
-  }
-
-  &.danger {
-    background-color: var(--danger-color, #dc3545);
-    color: white;
-
-    &:hover:not(.disabled) {
-      background-color: var(--danger-hover, #bd2130);
-    }
-  }
-
-  &.warning {
-    background-color: var(--warning-color, #ffc107);
-    color: var(--dark-color, #343a40);
-
-    &:hover:not(.disabled) {
-      background-color: var(--warning-hover, #e0a800);
-    }
-  }
-
-  // États spécifiques
-  &.disabled {
+  &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
 
-  &.loading {
-    cursor: wait;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  &:hover::before {
+    left: 100%;
   }
 }
 
-// Animation du spinner de chargement
-.spinner {
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid transparent;
-  border-top: 2px solid currentColor;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.primary {
+  background-color: var(--primary-600);
+  color: white;
 
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
+  &:hover:not(:disabled) {
+    background-color: var(--primary-700);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
   }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+.secondary {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border);
+
+  &:hover:not(:disabled) {
+    background-color: var(--bg-secondary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+  }
+}
+
+.danger {
+  background-color: var(--error);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+  }
+}
+
+.success {
+  background-color: var(--success);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: #059669;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+  }
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--primary-600);
+  border-color: var(--primary-600);
+
+  &:hover:not(:disabled) {
+    background-color: var(--primary-600);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+  }
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--text-primary);
+
+  &:hover:not(:disabled) {
+    background-color: var(--bg-tertiary);
+    transform: translateY(-1px);
+  }
+}
+
+.small {
+  padding: var(--spacing-sm) var(--spacing);
+  font-size: var(--font-size-sm);
+}
+
+.large {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-md);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.loading {
+  opacity: 0.8;
+  pointer-events: none;
 }

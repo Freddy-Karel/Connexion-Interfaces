@@ -1,83 +1,93 @@
-// Variables spécifiques à l'input
-$input-padding: 0.75rem 1rem;
-$input-border-radius: 0.375rem;
-$input-border-width: 1px;
-$input-transition: all 0.2s ease-in-out;
-
-.inputContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  width: 100%;
+.inputGroup {
+  margin-bottom: var(--spacing-lg);
+  position: relative;
 }
 
 .label {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--dark-color, #343a40);
-  margin-bottom: 0.25rem;
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
 }
 
 .input {
-  padding: $input-padding;
-  border: $input-border-width solid var(--border-color, #ced4da);
-  border-radius: $input-border-radius;
-  font-size: 1rem;
-  font-family: inherit;
-  transition: $input-transition;
-  background-color: white;
   width: 100%;
-  
-  // États de focus
+  padding: var(--spacing) var(--spacing);
+  font-size: var(--font-size);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+
   &:focus {
     outline: none;
-    border-color: var(--primary-color, #007bff);
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
-  
-  // État désactivé
+
   &:disabled {
-    background-color: var(--light-color, #f8f9fa);
+    background-color: var(--bg-tertiary);
+    color: var(--text-tertiary);
     cursor: not-allowed;
-    opacity: 0.7;
   }
-  
-  // Placeholder stylisé
+
   &::placeholder {
-    color: var(--secondary-color, #6c757d);
-    opacity: 0.7;
+    color: var(--text-tertiary);
   }
 }
 
-// Style d'erreur
 .error {
-  border-color: var(--danger-color, #dc3545) !important;
-  
+  border-color: var(--error);
+
   &:focus {
-    border-color: var(--danger-color, #dc3545);
-    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  }
+}
+
+.success {
+  border-color: var(--success);
+
+  &:focus {
+    border-color: var(--success);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
   }
 }
 
 .errorMessage {
-  color: var(--danger-color, #dc3545);
-  font-size: 0.8rem;
-  font-weight: 500;
-  margin-top: 0.25rem;
+  color: var(--error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
-// Styles spécifiques pour différents types
-.input[type="password"] {
-  font-family: 'Segoe UI', sans-serif; // Masquer les caractères de façon cohérente
+.withIcon {
+  padding-left: calc(var(--spacing) * 2.5);
 }
 
-.input[type="number"] {
-   
-  
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none; // Retirer les flèches sur Chrome/Safari
-    margin: 0;
+.icon {
+  position: absolute;
+  left: var(--spacing);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+}
+
+.passwordToggle {
+  position: absolute;
+  right: var(--spacing);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text-secondary);
   }
 }

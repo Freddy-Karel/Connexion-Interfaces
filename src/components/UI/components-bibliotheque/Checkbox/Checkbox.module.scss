@@ -1,0 +1,75 @@
+// Variables spécifiques à la checkbox
+$checkbox-size: 1.25rem;
+$checkbox-border-radius: 0.25rem;
+$checkbox-transition: all 0.2s ease-in-out;
+
+.checkboxContainer {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+  user-select: none;
+}
+
+.hiddenInput {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  
+  &:checked + .customCheckbox {
+    background-color: var(--primary-color, #007bff);
+    border-color: var(--primary-color, #007bff);
+    
+    &::after {
+      display: block;
+    }
+  }
+  
+  &:disabled + .customCheckbox {
+    background-color: var(--light-color, #f8f9fa);
+    border-color: var(--border-color, #ced4da);
+    cursor: not-allowed;
+    
+    &::after {
+      border-color: var(--secondary-color, #6c757d);
+    }
+  }
+  
+  &:focus + .customCheckbox {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  }
+}
+
+.customCheckbox {
+  position: relative;
+  width: $checkbox-size;
+  height: $checkbox-size;
+  border: 2px solid var(--border-color, #ced4da);
+  border-radius: $checkbox-border-radius;
+  transition: $checkbox-transition;
+  flex-shrink: 0;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 0.4rem;
+    top: 0.1rem;
+    width: 0.4rem;
+    height: 0.8rem;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+}
+
+.text {
+  color: var(--dark-color, #343a40);
+  font-weight: 500;
+}

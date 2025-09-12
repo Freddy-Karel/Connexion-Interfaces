@@ -1,0 +1,37 @@
+// Variables spécifiques au breadcrumbs
+$breadcrumbs-padding: 1rem 0;
+$breadcrumbs-color: #6c757d;
+$breadcrumbs-current-color: #343a40;
+$breadcrumbs-separator-margin: 0.5rem;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  padding: $breadcrumbs-padding;
+  font-size: 0.9rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  margin: 0 $breadcrumbs-separator-margin;
+  color: $breadcrumbs-color;
+}
+
+.link {
+  color: $breadcrumbs-color;
+  text-decoration: none;
+  
+  &:hover {
+    color: #007bff;
+    text-decoration: underline;
+  }
+}
+
+.current {
+  color: $breadcrumbs-current-color;
+  font-weight: 500;
+}

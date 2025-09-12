@@ -1,206 +1,112 @@
-/* Styles pour la page Dashboard */
 .dashboard {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, var(--primary-50) 0%, var(--secondary-50) 100%);
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
 }
 
-.dashboard-header {
+.dashboardHeader {
+    background: linear-gradient(135deg, var(--primary-600) 0%, var(--secondary-600) 100%);
+    color: white;
+    padding: var(--spacing-2xl) var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xl);
+}
+
+.welcomeCard {
+    background: linear-gradient(90deg, var(--primary-100) 0%, var(--secondary-100) 100%);
+    border: none;
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.userInfoGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.infoCard {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--primary-100);
+}
+
+.infoItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 2px solid #e2e8f0;
-    background: white;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--font-size-md);
+    color: var(--text-primary);
 }
 
-.dashboard-header h1 {
-    color: #2d3748;
-    font-size: 2rem;
-    margin: 0;
-    font-weight: 700;
+.infoLabel {
+    color: var(--primary-700);
+    font-weight: var(--font-weight-semibold);
 }
 
-.welcome-card {
-    text-align: center;
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    background: white;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+.infoValue {
+    color: var(--text-secondary);
 }
 
-.welcome-card h2 {
-    color: #4a5568;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-}
-
-.welcome-card p {
-    color: #718096;
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-}
-
-.profile-image {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin: 1rem auto;
-    border: 4px solid #667eea;
-    object-fit: cover;
-}
-
-.user-info-grid {
+.actionsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
 }
 
-.info-card {
-    padding: 1.5rem;
-    background: white;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.info-card h3 {
-    color: #4a5568;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.5rem;
-}
-
-.info-item {
+.actionCard {
+    background: linear-gradient(90deg, var(--primary-50) 0%, var(--secondary-50) 100%);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--primary-100);
     display: flex;
-    justify-content: space-between;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #f7fafc;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    align-items: flex-start;
 }
 
-.info-item:last-child {
-    border-bottom: none;
-}
+@media (max-width: 1024px) {
 
-.info-label {
-    font-weight: 600;
-    color: #4a5568;
-}
-
-.info-value {
-    color: #718096;
-}
-
-.actions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.action-card {
-    padding: 1.5rem;
-    background: white;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
-}
-
-.action-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-}
-
-.action-card h3 {
-    color: #4a5568;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.action-card p {
-    color: #718096;
-    margin-bottom: 1rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .dashboard {
-        padding: 1rem;
-    }
-
-    .dashboard-header {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-
-    .dashboard-header h1 {
-        font-size: 1.5rem;
-    }
-
-    .welcome-card {
-        padding: 1.5rem;
-    }
-
-    .user-info-grid {
+    .userInfoGrid,
+    .actionsGrid {
         grid-template-columns: 1fr;
     }
+}
 
-    .profile-image {
-        width: 100px;
-        height: 100px;
+@media (max-width: 768px) {
+    .dashboard {
+        padding: var(--spacing-lg) var(--spacing-sm);
+        gap: var(--spacing-xl);
+    }
+
+    .dashboardHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-xl) var(--spacing-lg);
     }
 }
 
 @media (max-width: 480px) {
-    .dashboard-header {
-        padding: 1rem;
+    .dashboard {
+        padding: var(--spacing-sm);
     }
 
-    .welcome-card {
-        padding: 1rem;
-    }
-
-    .welcome-card h2 {
-        font-size: 1.3rem;
-    }
-
-    .info-card {
-        padding: 1rem;
-    }
-}
-
-/* Styles pour le bouton de déconnexion */
-.logout-btn {
-    background: #e53e3e;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.logout-btn:hover {
-    background: #c53030;
-}
-
-/* Responsive pour le bouton de déconnexion */
-@media (max-width: 768px) {
-    .logout-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
+    .dashboardHeader {
+        padding: var(--spacing-lg);
     }
 }

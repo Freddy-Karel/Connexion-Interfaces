@@ -1,0 +1,146 @@
+.alert {
+  position: relative;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  animation: slideIn 0.3s ease-out;
+  overflow: hidden;
+  max-width: 600px;
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.message {
+  flex: 1;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+  
+  &:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Barre de progression pour fermeture auto
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: currentColor;
+  opacity: 0.3;
+  animation: progressBar linear;
+}
+
+@keyframes progressBar {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+// Variants de couleurs
+.success {
+  background-color: #f0fff4;
+  border-color: #9ae6b4;
+  color: #2f855a;
+  
+  .closeButton:hover {
+    background-color: rgba(72, 187, 120, 0.2);
+  }
+}
+
+.warning {
+  background-color: #fffbeb;
+  border-color: #faf089;
+  color: #b7791f;
+  
+  .closeButton:hover {
+    background-color: rgba(246, 173, 85, 0.2);
+  }
+}
+
+.error {
+  background-color: #fed7d7;
+  border-color: #feb2b2;
+  color: #c53030;
+  
+  .closeButton:hover {
+    background-color: rgba(245, 101, 101, 0.2);
+  }
+}
+
+.info {
+  background-color: #ebf8ff;
+  border-color: #90cdf4;
+  color: #2b6cb0;
+  
+  .closeButton:hover {
+    background-color: rgba(66, 153, 225, 0.2);
+  }
+}
+
+// Animations
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slideOut {
+  animation: slideOut 0.3s ease-in forwards;
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .alert {
+    padding: 0.75rem 1rem;
+    margin: 0.5rem;
+  }
+  
+  .content {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .closeButton {
+    align-self: flex-end;
+  }
+}

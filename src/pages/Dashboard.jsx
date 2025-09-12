@@ -71,12 +71,16 @@ const Dashboard = () => {
         <Card className={styles.actionCard}>
           <h3>Gérer le profil</h3>
           <p>Mettez à jour vos informations personnelles.</p>
-          <Button variant="primary" type="button">Modifier le profil</Button>
+          <Button onClick={() => navigate('/profile')} variant="primary" type="button">
+            Voir le Profil
+          </Button>
         </Card>
         <Card className={styles.actionCard}>
           <h3>Paramètres</h3>
           <p>Configurez les préférences de votre compte.</p>
-          <Button variant="secondary" type="button">Accéder aux paramètres</Button>
+          <Button onClick={() => navigate('/settings')} variant="secondary" type="button">
+            Accéder aux paramètres
+          </Button>
         </Card>
       </div>
     </div>

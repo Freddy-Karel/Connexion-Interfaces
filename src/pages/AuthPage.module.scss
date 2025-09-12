@@ -1,49 +1,172 @@
-.auth-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.authPage {
     min-height: 100vh;
-    background-color: #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing);
+    background: linear-gradient(135deg, var(--primary-50) 0%, var(--secondary-50) 100%);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, var(--primary-100) 0%, transparent 70%);
+        opacity: 0.5;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -50%;
+        left: -50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, var(--secondary-100) 0%, transparent 70%);
+        opacity: 0.5;
+    }
 }
 
-.auth-card {
+.authContainer {
+    position: relative;
+    z-index: 1;
     width: 100%;
-    max-width: 400px;
-    padding: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    background-color: #fff;
+    max-width: 450px;
 }
 
-.auth-form {
+.authCard {
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    padding: var(--spacing-2xl);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+
+    h1 {
+        font-size: var(--font-size-3xl);
+        font-weight: var(--font-weight-bold);
+        background: linear-gradient(135deg, var(--primary-600) 0%, var(--secondary-600) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    p {
+        color: var(--text-secondary);
+        font-size: var(--font-size-lg);
+    }
+}
+
+.authForm {
+    .formGroup {
+        margin-bottom: var(--spacing-lg);
+    }
+
     h2 {
         text-align: center;
-        margin-bottom: 1.5rem;
-        color: #333;
-    }
-
-    .error-message {
-        color: #e74c3c;
-        text-align: center;
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
+        margin-bottom: var(--spacing-xl);
+        color: var(--text-primary);
+        font-size: var(--font-size-2xl);
+        font-weight: var(--font-weight-semibold);
     }
 }
 
-.auth-switch {
+.divider {
+    display: flex;
+    align-items: center;
+    margin: var(--spacing-xl) 0;
+    color: var(--text-tertiary);
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background-color: var(--border);
+    }
+
+    span {
+        padding: 0 var(--spacing);
+        font-size: var(--font-size-sm);
+    }
+}
+
+.googleAuth {
+    margin-top: var(--spacing-lg);
+}
+
+.authSwitch {
     text-align: center;
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-    color: #555;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border);
+
+    p {
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing);
+    }
 }
 
-.link-button {
-    color: #007bff;
+.linkButton {
+    color: var(--primary-600);
     text-decoration: none;
-    font-weight: 600;
-    margin-left: 0.3rem;
+    font-weight: var(--font-weight-medium);
 
     &:hover {
         text-decoration: underline;
+        color: var(--primary-700);
+    }
+}
+
+.errorMessage {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+    padding: var(--spacing);
+    border-radius: var(--radius);
+    margin-bottom: var(--spacing-lg);
+    border-left: 4px solid var(--error);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.successMessage {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+    padding: var(--spacing);
+    border-radius: var(--radius);
+    margin-bottom: var(--spacing-lg);
+    border-left: 4px solid var(--success);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+    .authCard {
+        padding: var(--spacing-xl);
+    }
+
+    .logo h1 {
+        font-size: var(--font-size-2xl);
+    }
+}
+
+@media (max-width: 480px) {
+    .authPage {
+        padding: var(--spacing-sm);
+    }
+
+    .authCard {
+        padding: var(--spacing-lg);
     }
 }

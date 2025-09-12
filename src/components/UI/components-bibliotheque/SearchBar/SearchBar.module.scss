@@ -1,0 +1,17 @@
+.searchBar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end; // Aligne le bas de l'input et du bouton
+  margin-bottom: 1rem;
+
+  .input {
+    flex: 1; // Prend tout l'espace disponible
+    margin-bottom: 0; // Enlève la marge du composant Input mock
+  }
+
+  .button {
+    // Ajuste la taille du bouton pour qu'il soit carré
+    padding: 0.5rem;
+    min-width: auto;
+  }
+}

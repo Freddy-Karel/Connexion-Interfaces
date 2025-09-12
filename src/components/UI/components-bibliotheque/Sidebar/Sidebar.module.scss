@@ -1,0 +1,114 @@
+// Variables spécifiques au sidebar
+$sidebar-width: 250px;
+$sidebar-collapsed-width: 60px;
+$sidebar-bg: #f8f9fa;
+$sidebar-border: 1px solid #dee2e6;
+$sidebar-transition: all 0.3s ease-in-out;
+$item-padding: 1rem;
+$item-hover-bg: #e9ecef;
+$item-active-bg: #007bff;
+$item-active-color: white;
+
+// 🔥 MODIFICATION: Namespace spécifique pour éviter les conflits
+.sidebarComponent {
+  width: $sidebar-width;
+  background-color: $sidebar-bg;
+  border-right: $sidebar-border;
+  transition: $sidebar-transition;
+  height: 100%;
+  position: relative; // 🔥 Changé de fixed à relative
+  z-index: 100; // 🔥 Z-index contrôlé
+  
+  &.collapsed {
+    width: $sidebar-collapsed-width;
+    
+    .sidebarLabel {
+      display: none;
+    }
+  }
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  height: 100%;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  padding: $item-padding;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: $sidebar-transition;
+  text-align: left;
+  width: 100%;
+  
+  &:hover {
+    background-color: $item-hover-bg;
+  }
+  
+  &.active {
+    background-color: $item-active-bg;
+    color: $item-active-color;
+  }
+}
+
+.sidebarIcon {
+  margin-right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.sidebarLabel {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 🔥 MODIFICATION: Responsive amélioré pour éviter les conflits
+@media (max-width: 768px) {
+  .sidebarComponent {
+    width: 100%;
+    height: auto;
+    position: relative;
+    
+    &.collapsed {
+      width: 100%;
+      
+      .sidebarLabel {
+        display: block; // Toujours visible sur mobile
+      }
+    }
+  }
+  
+  .sidebarNav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .sidebarItem {
+    flex-direction: column;
+    padding: 0.5rem;
+    min-width: 60px;
+    text-align: center;
+  }
+  
+  .sidebarIcon {
+    margin-right: 0;
+    margin-bottom: 0.25rem;
+  }
+  
+  .sidebarLabel {
+    font-size: 0.75rem;
+  }
+}

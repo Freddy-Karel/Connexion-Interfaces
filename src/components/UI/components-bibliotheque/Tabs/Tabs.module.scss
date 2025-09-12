@@ -1,0 +1,32 @@
+// Variables spécifiques aux tabs
+$tab-padding: 0.75rem 1.5rem;
+$tab-border-width: 2px;
+$tab-active-color: #007bff;
+$tab-inactive-color: #6c757d;
+$tab-transition: all 0.2s ease-in-out;
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  padding: $tab-padding;
+  border: none;
+  background: none;
+  color: $tab-inactive-color;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $tab-transition;
+  border-bottom: $tab-border-width solid transparent;
+  
+  &:hover {
+    color: $tab-active-color;
+  }
+  
+  &.active {
+    color: $tab-active-color;
+    border-bottom-color: $tab-active-color;
+  }
+}

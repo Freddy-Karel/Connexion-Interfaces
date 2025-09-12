@@ -1,5 +1,6 @@
 .google-auth {
-    margin-top: 1.5rem;
+    margin-top: 3rem;
+    /* More generous top margin for better separation */
     text-align: center;
 }
 
@@ -7,23 +8,32 @@
     display: flex;
     align-items: center;
     text-align: center;
-    margin: 1.5rem 0;
-    color: #a0a0a0;
+    margin: 3rem 0;
+    /* More generous vertical margin */
+    color: var(--text-color-secondary); // Use secondary text color
+    font-size: 1rem;
+    /* Standardized font size */
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    /* More pronounced letter spacing */
+    text-transform: uppercase;
 }
 
 .divider::before,
 .divider::after {
     content: '';
     flex: 1;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-color); // Use theme-aware border color
 }
 
 .divider:not(:empty)::before {
-    margin-right: .5rem;
+    margin-right: 1.5rem;
+    /* Increased margin */
 }
 
 .divider:not(:empty)::after {
-    margin-left: .5rem;
+    margin-left: 1.5rem;
+    /* Increased margin */
 }
 
 .google-btn {
@@ -31,28 +41,45 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 0.75rem 1.5rem;
-    border: 1px solid #dadce0;
-    border-radius: 4px;
-    background-color: #fff;
-    color: #3c4043;
-    font-size: 1rem;
+    padding: 1rem 1.8rem;
+    /* More generous padding */
+    border: 1px solid var(--border-color);
+    /* Theme-aware border color */
+    border-radius: var(--button-border-radius);
+    /* Consistent border radius */
+    background-color: var(--card-background);
+    /* Theme-aware card background */
+    color: var(--text-color);
+    /* Theme-aware text color */
+    font-size: 1.05rem;
+    /* Slightly larger font size */
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px var(--shadow-color);
+    /* Deeper, more elegant shadow */
 
     img {
-        margin-right: 0.75rem;
-        width: 18px;
-        height: 18px;
+        margin-right: 1rem;
+        /* More space for the icon */
+        width: 24px;
+        /* Larger icon */
+        height: 24px;
     }
 
     &:hover {
-        background-color: #f8f9fa;
-        border-color: #d2d2d2;
+        background-color: var(--light-color-darken-5); // Use derived color
+        border-color: var(--light-color-darken-10); // Use derived color
+        box-shadow: 0 10px 25px var(--shadow-color);
+        /* Even deeper shadow on hover */
+        transform: translateY(-3px);
+        /* Subtle lift on hover */
     }
 
     &:disabled {
-        opacity: 0.6;
+        opacity: 0.4;
+        /* Consistent disabled state */
         cursor: not-allowed;
+        box-shadow: none;
     }
 }

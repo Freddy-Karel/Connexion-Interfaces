@@ -1,68 +1,181 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+  /* Modern font choice */
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Base colors - these will be overridden by data-theme */
+  --text-color: #212529;
+  --text-color-secondary: #495057;
+  --background-color: #f8f9fa;
+  --card-background: #ffffff;
+  --border-color: #dee2e6;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --link-color: var(--primary-color);
+  --link-hover-color: var(--primary-hover);
+
+  /* Semantic Colors */
+  --primary-color: #0d6efd;
+  /* Brighter Blue */
+  --primary-hover: #0a58ca;
+  --secondary-color: #6c757d;
+  /* Neutral Gray */
+  --secondary-hover: #5c636a;
+  --success-color: #198754;
+  /* Green */
+  --success-hover: #157347;
+  --danger-color: #dc3545;
+  /* Red */
+  --danger-hover: #bb2d3b;
+  --warning-color: #ffc107;
+  /* Yellow */
+  --warning-hover: #ffca2c;
+  --info-color: #0dcaf0;
+  /* Cyan */
+  --info-hover: #31d2f2;
+  --light-color: #f8f9fa;
+  /* Lighter Light Gray */
+  --light-hover: #e2e6ea;
+  --dark-color: #212529;
+  /* Darker Dark Gray */
+  --dark-hover: #1c1f23;
+
+  /* Derived colors for Sass functions - These will be used by SCSS directly */
+  --secondary-color-light: #cdd0d2;
+  /* lighten(#6c757d, 35%) */
+  --danger-color-lighten-40: #f7d2d5;
+  /* lighten(#dc3545, 40%) */
+  --light-color-darken-5: #e0e0e0;
+  /* darken(#f8f9fa, 5%) */
+  --light-color-darken-10: #c9c9c9;
+  /* darken(#f8f9fa, 10%) */
+  --primary-color-lighten-20: #66a1ff;
+  /* lighten(#0d6efd, 20%) for subtle backgrounds */
+  --dark-color-lighten-10: #4a5056;
+  /* lighten(#212529, 10%) */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Dark theme variables */
+html[data-theme="dark"] {
+  --text-color: #e2e2e2;
+  --text-color-secondary: #adb5bd;
+  --background-color: #212529;
+  --card-background: #343a40;
+  --border-color: #495057;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --link-color: var(--primary-color);
+  --link-hover-color: var(--primary-hover);
+
+  /* Adjusting specific semantic colors for dark mode if necessary */
+  --primary-color: #6ea8fe;
+  --primary-hover: #3d8bfd;
+  --secondary-color: #adb5bd;
+  --secondary-hover: #6c757d;
+  --light-color: #495057;
+  --light-hover: #5c636a;
+  --dark-color: #f8f9fa;
+  --dark-hover: #e2e6ea;
+  --secondary-color-light: #6c757d;
+  /* Adjusted for dark theme */
+  --danger-color-lighten-40: #5c2c31;
+  /* Adjusted for dark theme */
+  --light-color-darken-5: #3e444a;
+  /* Adjusted for dark theme */
+  --light-color-darken-10: #343a40;
+  /* Adjusted for dark theme */
+  --primary-color-lighten-20: #9bc5fe;
+  /* Adjusted for dark theme */
+  --dark-color-lighten-10: #f0f0f0;
+  /* Adjusted for dark theme */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 320px;
+  background-color: var(--background-color);
+  /* Use theme-aware background */
+  color: var(--text-color);
+  /* Use theme-aware text color */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 16px;
+  /* Base font size */
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  color: var(--link-color);
+  text-decoration: none;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+a:hover {
+  color: var(--link-hover-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 0.8em;
+  /* Consistent heading spacing */
+  line-height: 1.2;
+  font-weight: 700;
+  /* Bolder headings */
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 3em;
+  /* Slightly larger heading 1 */
+  letter-spacing: -0.03em;
+  /* Tighter letter spacing for h1 */
+}
+
+h2 {
+  font-size: 2.2em;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+  color: var(--text-color-secondary);
+  /* Secondary text color for paragraphs */
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: inherit;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
 }

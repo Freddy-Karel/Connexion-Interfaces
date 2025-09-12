@@ -1,60 +1,29 @@
+/* Global reset - often handled by a modern reset or base styles in index.css */
+/* 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+*/
 
+/* Body styles are now handled in index.css */
+/*
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
 }
+*/
 
 .App {
   width: 100%;
   max-width: 1200px;
-}
-
-/* Auth Pages */
-/* Styles for .auth-page, .auth-card, .auth-form, .auth-form h2, .auth-switch, .link-button have been moved to AuthPage.module.scss */
-/* Google Auth */
-/* Styles for .google-auth, .divider, .divider::before, .divider::after, .divider span, .google-btn, .google-btn img have been moved to GoogleAuth.module.scss */
-
-/* Dashboard */
-.dashboard {
-  width: 100%;
-  max-width: 800px;
+  /* Keeping a max-width for content */
   margin: 0 auto;
-  padding: 2rem;
+  /* Centering the app content */
+  padding: 20px;
+  /* Add some global padding */
+  min-height: 100vh;
+  /* Ensure app takes full height */
 }
 
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid #e2e8f0;
-}
-
-.welcome-card {
-  text-align: center;
-  padding: 2rem;
-}
-
-.profile-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin: 1rem auto;
-  border: 3px solid #667eea;
-}
-
-/* UI Components */
-/* .btn, .btn-primary, .btn-outline, .btn:disabled have been moved to Button.module.scss */
-/* .card has been moved to Card.module.scss */
-/* .input-group, .input-group label, .input-group input, .input-error, .error-message have been moved to Input.module.scss */
+/* All other component-specific styles have been moved to their respective SCSS modules */

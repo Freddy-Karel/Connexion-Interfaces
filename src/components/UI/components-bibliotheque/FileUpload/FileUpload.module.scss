@@ -1,0 +1,14 @@
+.fileUpload {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.hiddenInput {
+  display: none; // Cache l'input file natif
+}
+
+.button {
+  // Les styles du bouton sont déjà gérés par le composant Button mock
+  // Ici on peut ajouter des ajustements spécifiques si besoin
+  cursor: pointer;
+}

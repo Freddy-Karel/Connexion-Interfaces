@@ -1,0 +1,101 @@
+// Variables spécifiques à la navbar
+$navbar-padding: 1rem 0;
+$navbar-bg: #343a40;
+$navbar-color: white;
+$navbar-hover-color: #f8f9fa;
+$navbar-transition: all 0.2s ease-in-out;
+
+// 🔥 MODIFICATION: Namespace spécifique
+.navbarComponent {
+  background-color: $navbar-bg;
+  color: $navbar-color;
+  padding: $navbar-padding;
+  position: relative; // 🔥 Position relative pour éviter les conflits
+  z-index: 200; // 🔥 Z-index plus élevé que la sidebar
+  width: 100%;
+}
+
+.navbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navbarLogo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.navbarLinks {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.navbarLink {
+  color: $navbar-color;
+  text-decoration: none;
+  transition: $navbar-transition;
+  white-space: nowrap;
+  
+  &:hover {
+    color: $navbar-hover-color;
+  }
+}
+
+.navbarLogoutButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid $navbar-color;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: $navbar-color;
+  cursor: pointer;
+  transition: $navbar-transition;
+  white-space: nowrap;
+  flex-shrink: 0;
+  
+  &:hover {
+    background-color: $navbar-color;
+    color: $navbar-bg;
+  }
+}
+
+// 🔥 AJOUT: Responsive pour éviter les conflits de layout
+@media (max-width: 768px) {
+  .navbarContainer {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .navbarLinks {
+    gap: 1rem;
+    justify-content: center;
+    order: 3;
+    width: 100%;
+  }
+  
+  .navbarLogo {
+    order: 1;
+  }
+  
+  .navbarLogoutButton {
+    order: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbarLinks {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .navbarLink {
+    padding: 0.5rem 0;
+  }
+}

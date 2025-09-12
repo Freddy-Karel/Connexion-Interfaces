@@ -1,0 +1,148 @@
+// Variables
+$tooltip-bg: #333;
+$tooltip-text: #fff;
+$tooltip-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+$tooltip-z-index: 1000;
+$arrow-size: 6px;
+
+.tooltipContainer {
+  display: inline-block;
+  position: relative;
+}
+
+.trigger {
+  display: inline-block;
+  cursor: pointer;
+  
+  &:focus-visible {
+    outline: 2px solid var(--primary-color, #007bff);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+}
+
+.tooltip {
+  position: fixed;
+  background: $tooltip-bg;
+  color: $tooltip-text;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  box-shadow: $tooltip-shadow;
+  z-index: $tooltip-z-index;
+  animation: fadeIn 0.2s ease-out;
+  max-width: 200px;
+  text-align: center;
+
+  // Gestion du texte long
+  &.longText {
+    white-space: normal;
+    max-width: 300px;
+  }
+}
+
+// Flèche du tooltip
+.arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  &[data-position="top"] {
+    bottom: -$arrow-size;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: $arrow-size $arrow-size 0 $arrow-size;
+    border-color: $tooltip-bg transparent transparent transparent;
+  }
+
+  &[data-position="bottom"] {
+    top: -$arrow-size;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 $arrow-size $arrow-size $arrow-size;
+    border-color: transparent transparent $tooltip-bg transparent;
+  }
+
+  &[data-position="left"] {
+    right: -$arrow-size;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: $arrow-size 0 $arrow-size $arrow-size;
+    border-color: transparent transparent transparent $tooltip-bg;
+  }
+
+  &[data-position="right"] {
+    left: -$arrow-size;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: $arrow-size $arrow-size $arrow-size 0;
+    border-color: transparent $tooltip-bg transparent transparent;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Variantes de thème
+.tooltip {
+  &.light {
+    background: #fff;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    
+    .arrow[data-position="top"] {
+      border-color: #fff transparent transparent transparent;
+    }
+    .arrow[data-position="bottom"] {
+      border-color: transparent transparent #fff transparent;
+    }
+    .arrow[data-position="left"] {
+      border-color: transparent transparent transparent #fff;
+    }
+    .arrow[data-position="right"] {
+      border-color: transparent #fff transparent transparent;
+    }
+  }
+  
+  &.primary {
+    background: var(--primary-color, #007bff);
+    
+    .arrow[data-position="top"] {
+      border-color: var(--primary-color, #007bff) transparent transparent transparent;
+    }
+    // ... autres positions
+  }
+}
+
+// Accessibilité
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    animation: none;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .tooltip {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+    max-width: 150px;
+    
+    &.longText {
+      max-width: 200px;
+    }
+  }
+}
