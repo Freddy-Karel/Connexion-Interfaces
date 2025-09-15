@@ -4,6 +4,7 @@ import { useAuth } from '../hooks/useAuth';
 import Card from '../components/UI/Card';
 import Button from '../components/UI/Button';
 import styles from './ProfilePage.module.scss';
+import defaultAvatar from '../assets/profile.png'; // Correction du chemin
 
 const ProfilePage = () => {
     const { currentUser } = useAuth();
@@ -27,26 +28,28 @@ const ProfilePage = () => {
         <div className={styles.profilePage}>
             <Card className={styles.profileCard}>
                 <h2 className={styles.profileTitle}>Mon Profil</h2>
-                {currentUser.photoURL && (
-                    <img src={currentUser.photoURL} alt="Profile" className={styles.profileImage} />
-                )}
-                <div className={styles.profileInfo}>
-                    <div className={styles.infoItem}>
+                <img
+                    src={currentUser.photoURL || defaultAvatar}
+                    alt="Profile"
+                    className={styles.profileImage}
+                />
+                <div className={styles.infoTable}>
+                    <div className={styles.infoRow}>
                         <span className={styles.infoLabel}>Nom:</span>
-                        <span className={styles.infoValue}>{currentUser.displayName || 'Non spécifié'}</span>
+                        <span className={styles.infoValue} title={currentUser.displayName} style={{ wordBreak: 'break-all' }}>{currentUser.displayName || 'Non spécifié'}</span>
                     </div>
-                    <div className={styles.infoItem}>
+                    <div className={styles.infoRow}>
                         <span className={styles.infoLabel}>Email:</span>
-                        <span className={styles.infoValue}>{currentUser.email}</span>
+                        <span className={styles.infoValue} title={currentUser.email} style={{ wordBreak: 'break-all' }}>{currentUser.email}</span>
                     </div>
                     {currentUser.uid && (
-                        <div className={styles.infoItem}>
+                        <div className={styles.infoRow}>
                             <span className={styles.infoLabel}>UID:</span>
-                            <span className={styles.infoValue}>{currentUser.uid}</span>
+                            <span className={styles.infoValue} title={currentUser.uid} style={{ wordBreak: 'break-all' }}>{currentUser.uid}</span>
                         </div>
                     )}
                     {currentUser.method && (
-                        <div className={styles.infoItem}>
+                        <div className={styles.infoRow}>
                             <span className={styles.infoLabel}>Méthode de connexion:</span>
                             <span className={styles.infoValue}>{currentUser.method}</span>
                         </div>

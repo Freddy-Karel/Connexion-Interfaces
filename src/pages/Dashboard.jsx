@@ -5,6 +5,7 @@ import { logout } from '../services/authService';
 import Button from '../components/UI/Button';
 import Card from '../components/UI/Card';
 import styles from './Dashboard.module.scss'; // Update import
+import defaultAvatar from '../assets/profile.png'; // Correction du chemin
 
 const Dashboard = () => {
   const { currentUser } = useAuth();
@@ -29,38 +30,43 @@ const Dashboard = () => {
       </div>
 
       <Card className={styles.welcomeCard}>
-        <h2>Bienvenue, {currentUser.displayName || currentUser.email}!</h2>
-        <p>Ceci est votre tableau de bord personnel.</p>
-        {currentUser.photoURL && (
-          <img src={currentUser.photoURL} alt="Profile" className={styles.profileImage} />
-        )}
+        <div className={styles.profileHeaderBlock}>
+          <img
+            src={currentUser.photoURL || defaultAvatar}
+            alt="Profile"
+            className={styles.profileImage}
+          />
+          <div>
+            <h2>Bienvenue, {currentUser.displayName || currentUser.email}!</h2>
+            <p>Ceci est votre tableau de bord personnel.</p>
+          </div>
+        </div>
       </Card>
 
       <div className={styles.userInfoGrid}>
         <Card className={styles.infoCard}>
           <h3>Informations utilisateur</h3>
-          <div className={styles.infoItem}>
-            <span className={styles.infoLabel}>Email:</span>
-            <span className={styles.infoValue}>{currentUser.email}</span>
-          </div>
-          {currentUser.displayName && (
-            <div className={styles.infoItem}>
+          <div className={styles.infoTable}>
+            <div className={styles.infoRow}>
               <span className={styles.infoLabel}>Nom:</span>
-              <span className={styles.infoValue}>{currentUser.displayName}</span>
+              <span className={styles.infoValue} title={currentUser.displayName} style={{ wordBreak: 'break-all' }}>{currentUser.displayName || 'Non spécifié'}</span>
             </div>
-          )}
-          <div className={styles.infoItem}>
-            <span className={styles.infoLabel}>UID:</span>
-            <span className={styles.infoValue}>{currentUser.uid}</span>
+            <div className={styles.infoRow}>
+              <span className={styles.infoLabel}>Email:</span>
+              <span className={styles.infoValue} title={currentUser.email} style={{ wordBreak: 'break-all' }}>{currentUser.email}</span>
+            </div>
+            <div className={styles.infoRow}>
+              <span className={styles.infoLabel}>UID:</span>
+              <span className={styles.infoValue} title={currentUser.uid} style={{ wordBreak: 'break-all' }}>{currentUser.uid}</span>
+            </div>
+            {currentUser.method && (
+              <div className={styles.infoRow}>
+                <span className={styles.infoLabel}>Méthode de connexion:</span>
+                <span className={styles.infoValue}>{currentUser.method}</span>
+              </div>
+            )}
           </div>
-          {currentUser.method && (
-            <div className={styles.infoItem}>
-              <span className={styles.infoLabel}>Méthode de connexion:</span>
-              <span className={styles.infoValue}>{currentUser.method}</span>
-            </div>
-          )}
         </Card>
-
         <Card className={styles.infoCard}>
           <h3>Activités récentes</h3>
           <p>Aucune activité récente à afficher.</p>
